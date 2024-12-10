@@ -37,6 +37,12 @@ dependencies {
 
 	// 테스트 런처 (JUnit Platform 관련)
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	//Oauth2 의존성
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	//세션 저장소를 jdbc로 설정
+	implementation 'org.springframework.session:spring-session-jdbc'
 }
 
 tasks.named('test') {
