@@ -4,6 +4,7 @@ import com.dashboard.domain.posts.Posts;
 import com.dashboard.domain.posts.PostsRepository;
 import com.dashboard.web.dto.PostsSaveRequestDto;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class    PostsApiControllerTest {
+public class PostsApiControllerTest {
+
 
     @LocalServerPort
     private int port;
@@ -34,6 +41,7 @@ public class    PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public void Posts_등록된다() throws Exception {
         //given
         String title = "title";
