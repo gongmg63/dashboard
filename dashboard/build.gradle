@@ -46,6 +46,9 @@ dependencies {
 
 	// 스프링 시큐리티 테스트를 위한 도구 지원
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	// MariaDB 드라이버
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 tasks.named('test') {
